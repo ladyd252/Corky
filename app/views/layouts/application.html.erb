@@ -8,6 +8,47 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#links-to-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="links-to-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/static_pages/home">Home</a></li>
+          <li><a href="/static_pages/contact">Contact</a></li>
+          <li><a href="/static_pages/about">About</a></li>
+          <% if !current_user %>
+          <li><a href="/session/new">Sign In</a></li>
+          <% else %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="/user">My Profile</a></li>
+              <li>  <form action="/session" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                <input
+                type="hidden"
+                name="authenticity_token"
+                value="<%= form_authenticity_token %>">
+
+                <input type="submit" value="Logout!">
+              </form>
+            </ul>
+          </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
   <% if flash.now[:errors] %>
     <% flash.now[:errors].each do |error| %>
       <h4> <%= error %> </h4>
