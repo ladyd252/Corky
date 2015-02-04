@@ -8,11 +8,18 @@
 #  creator_id   :integer          not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  event_date   :date
+#
+# Indexes
+#
+#  index_events_on_creator_id  (creator_id)
 #
 
 class Event < ActiveRecord::Base
   validates :title, :creator_id, presence: true
 
   belongs_to :user, class_name: "User", foreign_key: :creator_id, dependent: :destroy
+
+  has_many :posts
 
 end

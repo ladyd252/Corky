@@ -9,6 +9,10 @@
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
+# Indexes
+#
+#  index_users_on_email  (email) UNIQUE
+#
 
 class User < ActiveRecord::Base
   validates :email, :password_digest, :session_token, presence: true
@@ -20,6 +24,8 @@ class User < ActiveRecord::Base
   after_initialize :ensure_session_token
 
   has_many :events, class_name: "Event", foreign_key: :creator_id
+
+  has_many :posts, through: :events, source: :posts
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
