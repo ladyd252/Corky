@@ -11,10 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150203200120) do
+ActiveRecord::Schema.define(version: 20150204013818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string   "title",        null: false
+    t.string   "phone_number"
+    t.integer  "creator_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.date     "event_date"
+  end
+
+  add_index "events", ["creator_id"], name: "index_events_on_creator_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "body"
+    t.string   "picture_url"
+    t.integer  "event_id",    null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "posts", ["event_id"], name: "index_posts_on_event_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false

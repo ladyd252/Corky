@@ -4,3 +4,12 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .container-fluid{
+   margin-right: 15%;
+   margin-left: 15%;
+ }
+
+.collapse.navbar-collapse{
+  float: right;
+}
