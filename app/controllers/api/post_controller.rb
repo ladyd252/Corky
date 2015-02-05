@@ -4,6 +4,7 @@ module Api
 
     def create
       puts params
+      logger.debug "Post Params: #{params.to_json}"
       @post = Post.new(post_params)
       if @event.save
         render :show
