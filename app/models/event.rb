@@ -35,8 +35,12 @@ class Event < ActiveRecord::Base
 
       # Purchase the number
       @number = @numbers[0]
-      incoming_number = @client.account.incoming_phone_numbers.create(:phone_number => @number.phone_number)
-      incoming_number.update(sms_url: self.phone_url, sms_method: 'POST')
+      incoming_number = @client.account.incoming_phone_numbers.create(
+        :phone_number => @number.phone_number,
+        sms_url: self.phone_url,
+        sms_method: 'POST'
+      )
+      # incoming_number.update(sms_url: self.phone_url, sms_method: 'POST')
       self.phone_number = incoming_number.phone_number
     end
   end
