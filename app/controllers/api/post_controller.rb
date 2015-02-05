@@ -1,6 +1,5 @@
 module Api
   class PostsController < ApplicationController
-    before_action :require_signed_in!
     skip_before_action :verify_authenticity_token
 
     def create
