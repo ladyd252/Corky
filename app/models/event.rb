@@ -22,4 +22,23 @@ class Event < ActiveRecord::Base
 
   has_many :posts
 
+  attr_accessor :phone_url
+
+  def purchase_num=(val)
+
+    if val == "true"
+      account_sid = 'ACff75e6d517c964d90ccfc1be4570a926'
+      auth_token = '01a35022132e31947a74be5b4e79468f'
+      @client = Twilio::REST::Client.new account_sid, auth_token
+
+      @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => "415")
+
+      # Purchase the number
+      @number = @numbers[0]
+      incoming_number = @client.account.incoming_phone_numbers.create(:phone_number => @number.phone_number)
+      incoming_number.update(sms_url: self.phone_url, sms_method: 'POST')
+      self.phone_number = incoming_number.phone_number
+    end
+  end
+
 end

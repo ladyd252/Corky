@@ -2,7 +2,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Creating a new event" aria-hidden="true">
+<!-- <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Creating a new event" aria-hidden="true">
  <div class="modal-dialog">
    <div class="modal-content">
      <div class="modal-header">
@@ -14,9 +14,21 @@
        <input name="event[title]" required autofocus>
        <label> Date </label>
        <input type="date" name="event[event_date]">
-       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+       <button type="button" class="submit" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
      </form>
      </div>
    </div>
  </div>
+</div> -->
+
+
+<div id="dialog-form" title="Create new user">
+
+  <form class="event-form">
+    <label> Event title</label>
+    <input name="event[title]" required autofocus>
+    <label> Date </label>
+    <input type="date" name="event[event_date]">
+    <button type="submit">Submit</button>
+  </form>
 </div>

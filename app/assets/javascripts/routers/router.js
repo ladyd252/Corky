@@ -21,8 +21,10 @@ Corky.Routers.Router = Backbone.Router.extend({
 
   },
 
-  show: function(){
-
+  show: function(id){
+    var eventToShow = this.collection.getOrFetch(id);
+    var showView = new Corky.Views.EventShow({model: eventToShow});
+    this._swapView(showView);
   },
 
   _swapView: function(view){

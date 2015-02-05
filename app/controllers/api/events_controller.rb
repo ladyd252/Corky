@@ -14,6 +14,8 @@ module Api
 
     def create
       @event = current_user.events.new(event_params)
+      @event.phone_url = api_posts_url
+
       if @event.save
         render :show
       else
@@ -44,7 +46,7 @@ module Api
   private
 
     def event_params
-      params.require(:event).permit(:title, :event_date)
+      params.require(:event).permit(:title, :event_date, :purchase_num)
     end
   end
 end

@@ -3,6 +3,7 @@ module Api
     before_action :require_signed_in!
 
     def create
+      puts params
       @post = Post.new(post_params)
       if @event.save
         render :show

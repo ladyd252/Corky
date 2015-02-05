@@ -1,4 +1,29 @@
 <h1> Your events: </h1>
 
+ <span class="new-event"  data-toggle="modal" data-target="#myModal"> + New Event</span>
+
 <ul class="events">
+
 </ul>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="Creating a new event" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+     </div>
+     <form class="event-form">
+       <label> Event title</label>
+       <input name="event[title]" required autofocus><br>
+       <label> Date </label>
+       <input type="date" name="event[event_date]"><br>
+       <input type="checkbox" name="event[purchase_num]" value="true">Purchase Phone Number<br>
+       <input type="submit" aria-label="Close" value="Add Event">
+     </form>
+     </div>
+   </div>
+ </div>
+</div>
