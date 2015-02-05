@@ -34,6 +34,8 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'annotate', '~> 2.6.5'
+gem "backbone-on-rails"
+gem "animate-rails"
 
 gem 'bootstrap-sass'
 group :development, :test do

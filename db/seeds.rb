@@ -8,6 +8,10 @@
 
 users = User.create!([{email: "me@me.com", password: "password"}, {email: "you@you.com", password: "password"}])
 
-users[1].events.create(title: "Birthday Party")
+e1 = users[1].events.create(title: "Birthday Party")
 
-users[0].events.create(title: "Wedding")
+e2 = users[0].events.create(title: "Wedding")
+
+p1 = e1.posts.create(body: "Happy Birthday!", picture_url: "https://s-media-cache-ak0.pinimg.com/236x/86/bd/0a/86bd0afa2d404c52465e8edb14c6daab.jpg")
+
+p2 = e2.posts.create(body: "Congrats to both of you!", picture_url: "https://img0.etsystatic.com/006/0/6118686/il_340x270.365377162_e03v.jpg")

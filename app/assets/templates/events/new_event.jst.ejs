@@ -1,0 +1,22 @@
+<span class="new-event"  data-toggle="modal" data-target="#myModal"> + New Event</span>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="Creating a new event" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       <h4 class="modal-title" id="myModalLabel">Create a New Event</h4>
+     </div>
+     <form class="event-form">
+       <label> Event title</label>
+       <input name="event[title]" required autofocus>
+       <label> Date </label>
+       <input type="date" name="event[event_date]">
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">CLOSE</span></button>
+     </form>
+     </div>
+   </div>
+ </div>
+</div>

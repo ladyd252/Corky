@@ -15,8 +15,8 @@
 #
 
 class Post < ActiveRecord::Base
-  validates :event_id
+  validates :event_id, presence: true
 
   belongs_to :event
-  belongs_to :user, through: :event, source: :user
+  has_one :user, through: :event, source: :user
 end
