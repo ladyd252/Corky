@@ -34,5 +34,5 @@ module Api
   #   def post_params
   #     params.require(:post).permit(:title, :event_date)
   #   end
-  # end
+  end
 end
