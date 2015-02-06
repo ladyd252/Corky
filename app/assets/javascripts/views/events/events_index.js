@@ -11,12 +11,11 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addEventView);
     this.listenTo(this.collection, "remove", this.removeEvent)
-    // this.addNewEventView();
-    this.collection.each(this.addEvent.bind(this));
+    this.collection.each(this.addEventView.bind(this));
   },
 
   addEvent: function(event){
-    event.preventDefault();
+    event.preventDefault;
     var params = $(event.target).serializeJSON();
     var newEvent = new Corky.Models.Event();
     var collection = this.collection;

@@ -38,6 +38,7 @@ gem "backbone-on-rails"
 gem "animate-rails"
 gem 'jquery-ui-rails'
 gem 'twilio-ruby'
+gem 'figaro'
 
 gem 'bootstrap-sass'
 group :development, :test do

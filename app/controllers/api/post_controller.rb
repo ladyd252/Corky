@@ -11,7 +11,7 @@ module Api
       }
 
       num_pics = params["NumMedia"].to_i
-      (0..num_pics).each do |i|
+      (0..num_pics-1).each do |i|
         post_params["picture_url"] = params["MediaUrl".concat(i.to_s)]
         @post = Post.new(post_params)
         if @post.save

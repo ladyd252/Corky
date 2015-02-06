@@ -27,8 +27,8 @@ class Event < ActiveRecord::Base
   def purchase_num=(val)
 
     if val == "true"
-      account_sid = 'ACff75e6d517c964d90ccfc1be4570a926'
-      auth_token = '01a35022132e31947a74be5b4e79468f'
+      account_sid = ENV["twilio_account_id"]
+      auth_token = ENV["twilio_auth_token"]
       @client = Twilio::REST::Client.new account_sid, auth_token
 
       @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => "415")
