@@ -1,7 +1,7 @@
 <div id="content"></div>
 
 <script>
-PUSHER_APP_ID = '<%= ENV["pusher_app_id"].html_safe %>';
+PUSHER_APP_ID = '<%= ENV["pusher_key"].html_safe %>';
 $(document).ready(function(){
   Corky.initialize();
 });

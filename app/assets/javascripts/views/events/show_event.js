@@ -6,11 +6,15 @@ Corky.Views.EventShow = Backbone.View.extend({
     this.listenTo(this.model, "sync change", this.render)
     this.listenTo(this.model.posts(), "sync change", this.render)
     var pusher = new Pusher(PUSHER_APP_ID);
-    var channel = pusher.subscribe('event'.concat(this.id));
+    console.log(PUSHER_APP_ID);
+    var channelName = 'event'.concat(this.model.id);
+    var channel = pusher.subscribe(channelName);
+    console.log(channelName);
     var event = this.model;
     channel.bind('fetchPosts',
       function() {
-        event.posts().fetch()
+        alert("GOT A POST YYYYYYEEEEAAAAAHHHHHHHHH ;)");
+        event.fetch();
       }
     );
   },

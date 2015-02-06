@@ -17,11 +17,12 @@ module Api
           Pusher.app_id = ENV["pusher_app_id"]
           Pusher.key = ENV["pusher_key"]
           Pusher.secret = ENV["pusher_secret"]
-          Pusher.trigger(["event#{event.id}"],"fetchPosts")
+          Pusher.trigger(["event#{event.id}"],"fetchPosts", {more_pictures: 'lol'})
         else
           render json: @post.errors.full_messages, status: 422
         end
       end
+
     end
 
     def destroy
