@@ -1,5 +1,6 @@
 <h1> <%= event.escape("title") %> </h1>
 <a href="#">Back to Index</a>
+<ul class="posts">
 <% event.posts().each(function(post){ %>
   <% if(post.escape("picture_url")){ %>
     <li> <img src="<%=post.escape("picture_url")%>">
@@ -8,3 +9,4 @@
     <li> <%=post.escape("body")%>
   <% } %>
 <% }) %>
+</ul>

@@ -10,7 +10,3 @@ window.Corky = {
     Backbone.history.start()
   }
 };
-
-$(document).ready(function(){
-  Corky.initialize();
-});

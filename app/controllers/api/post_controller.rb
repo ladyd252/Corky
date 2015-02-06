@@ -3,11 +3,10 @@ module Api
     skip_before_action :verify_authenticity_token
 
     def create
-      puts params
-      logger.debug "Post Params: #{params.to_json}"
+      event = Event.find_by_phone_number(params["To"])
       post_params = {
         body: params["Body"],
-        event_id: Event.find_by_phone_number(params["To"]).id
+        event_id: event.id
       }
 
       num_pics = params["NumMedia"].to_i
@@ -15,7 +14,10 @@ module Api
         post_params["picture_url"] = params["MediaUrl".concat(i.to_s)]
         @post = Post.new(post_params)
         if @post.save
-          # render :show
+          Pusher.app_id = ENV["pusher_app_id"]
+          Pusher.key = ENV["pusher_key"]
+          Pusher.secret = ENV["pusher_secret"]
+          Pusher.trigger(["event#{event.id}"],"fetchPosts")
         else
           render json: @post.errors.full_messages, status: 422
         end

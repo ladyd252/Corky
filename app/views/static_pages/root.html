@@ -1,1 +1,8 @@
 <div id="content"></div>
+
+<script>
+PUSHER_APP_ID = '<%= ENV["pusher_app_id"].html_safe %>';
+$(document).ready(function(){
+  Corky.initialize();
+});
+</script>

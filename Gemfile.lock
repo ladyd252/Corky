@@ -97,6 +97,7 @@ GEM
     globalid (0.3.0)
       activesupport (>= 4.1.0)
     hike (1.2.3)
+    httpclient (2.6.0.1)
     i18n (0.7.0)
     jbuilder (2.2.6)
       activesupport (>= 3.0.0, < 5)
@@ -128,6 +129,10 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    pusher (0.14.4)
+      httpclient (~> 2.5)
+      multi_json (~> 1.0)
+      signature (~> 0.1.8)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.0)
@@ -172,6 +177,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    signature (0.1.8)
     slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
@@ -223,6 +229,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   pry-rails
+  pusher
   quiet_assets
   rails (= 4.2.0)
   sass-rails (~> 5.0)

@@ -16,4 +16,5 @@ Corky.Models.Event = Backbone.Model.extend({
     return response;
   }
 
+
 });
