@@ -1,0 +1,8 @@
+<div class="col-md-4">
+<% if(post.escape("picture_url")){ %>
+  <img src="<%=post.escape("picture_url")%>">
+<% } %>
+<% if(post.escape("body")){ %>
+  <h2><%=post.escape("body")%></h2>
+<% } %>
+</div>
