@@ -24,6 +24,7 @@ module Api
           end
         end
       else
+        @post = Post.new(post_params)
         if @post.save
           Pusher.app_id = ENV["pusher_app_id"]
           Pusher.key = ENV["pusher_key"]
