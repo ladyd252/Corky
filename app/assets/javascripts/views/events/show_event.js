@@ -13,7 +13,6 @@ Corky.Views.EventShow = Backbone.View.extend({
     var event = this.model;
     channel.bind('fetchPosts',
       function() {
-        alert("GOT A POST YYYYYYEEEEAAAAAHHHHHHHHH ;)");
         event.fetch();
       }
     );
