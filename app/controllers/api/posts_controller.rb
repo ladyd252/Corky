@@ -10,9 +10,20 @@ module Api
       }
 
       num_pics = params["NumMedia"].to_i
-      (0..num_pics-1).each do |i|
-        post_params["picture_url"] = params["MediaUrl".concat(i.to_s)]
-        @post = Post.new(post_params)
+      if num_pics > 0
+        (0..num_pics-1).each do |i|
+          post_params["picture_url"] = params["MediaUrl".concat(i.to_s)]
+          @post = Post.new(post_params)
+          if @post.save
+            Pusher.app_id = ENV["pusher_app_id"]
+            Pusher.key = ENV["pusher_key"]
+            Pusher.secret = ENV["pusher_secret"]
+            Pusher.trigger(["event#{event.id}"],"fetchPosts", {more_pictures: 'lol'})
+          else
+            render json: @post.errors.full_messages, status: 422
+          end
+        end
+      else
         if @post.save
           Pusher.app_id = ENV["pusher_app_id"]
           Pusher.key = ENV["pusher_key"]
