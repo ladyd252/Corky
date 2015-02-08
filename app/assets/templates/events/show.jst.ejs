@@ -1,5 +1,15 @@
 <h1> <%= event.escape("title") %> </h1>
 <a href="#">Back to Index</a>
 <div class="posts row">
+  <% event.posts().each(function(post){ %>
+    <div class="post col-md-4">
+    <% if(post.escape("picture_url")){ %>
+      <img src="<%=post.escape("picture_url")%>">
+    <% } %>
+    <% if(post.escape("body")){ %>
+      <h2><%=post.escape("body")%></h2>
+    <% } %>
+    </div>
+  <% }) %>
 
 </div>

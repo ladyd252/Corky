@@ -2,9 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.show-page{
-
-}
 
 .posts.row{
   :after{
@@ -22,6 +19,23 @@
     h2{
       position: absolute;
       z-index: 1;
+      bottom: 5px;
+      background-color: rgba(255,255,255, 0.7);
+      border-radius: 3px;
+    }
+  }
+  .on-display{
+    z-index: 10;
+    width: auto;
+    height: 100%;
+    img {
+      border-radius: 10px;
+      width: 100%;
+      height: auto;
+    }
+    h2{
+      position: absolute;
+      z-index: 11;
       bottom: 5px;
       background-color: rgba(255,255,255, 0.7);
       border-radius: 3px;

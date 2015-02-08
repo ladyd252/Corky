@@ -10,7 +10,7 @@ Corky.Collections.Events = Backbone.Collection.extend({
     var events = this;
     event.fetch({
       success: function(){
-        events.add(event)
+        events.add(event);
       }
     })
     return event

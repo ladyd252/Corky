@@ -28,12 +28,25 @@ body {
   font-size: 28px;
 }
 
+#content{
+  padding: 50px;
+  width: 100%;
+  height: auto;
+  &:after{
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
 
 footer{
-  position: absolute;
-  top:850px;
-  min-height: 200px;
+  z-index: -1;
+  bottom: -200px;
+  position: relative;
+  padding: 20px;
   width: 100%;
+  min-height: 200px;
   background-color: #F5F5F5;
   p{
     padding: 20px;
