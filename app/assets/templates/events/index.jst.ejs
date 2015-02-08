@@ -1,6 +1,6 @@
 <h1> Your events: </h1>
 
-<div role="tabpanel">
+<div class="tabpanel" role="tabpanel">
 
   <ul class="events nav nav-tabs" role="tablist">
     <li role="presentation" class="active">
@@ -32,6 +32,7 @@
       <div role="tabpanel" class="tab-pane" id="<%=event.id%>">
         <li> Date: <%= event.escape('event_date') %></li>
         <li> Event welcome message: </li>
+        <li> <a href="#events/<%=event.id%>">Show page </a> 
       </div>
 
     <%  }) %>
