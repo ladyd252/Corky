@@ -43,10 +43,10 @@ body {
 footer{
   z-index: -1;
   bottom: -200px;
-  position: relative;
+  position: absolute;
   padding: 20px;
   width: 100%;
-  min-height: 200px;
+  height: auto;
   background-color: #F5F5F5;
   p{
     padding: 20px;

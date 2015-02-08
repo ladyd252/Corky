@@ -1,1 +1,4 @@
- <span> <a href="#events/<%=event.id%>"> <%= event.escape('title') %>  </a> <button class="delete-item">X</button> </span>
+<div role="tabpanel" class="tab-pane active" id="<%=event.id%>">
+  <li> Date: <%= event.escape('event_date') %></li>
+  <li> Event welcome message: </li>
+</div>
