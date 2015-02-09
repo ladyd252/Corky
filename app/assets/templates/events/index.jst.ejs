@@ -3,39 +3,12 @@
 <div class="tabpanel" role="tabpanel">
 
   <ul class="events nav nav-tabs" role="tablist">
-    <li role="presentation" class="active">
-      <a href="#new" role="tab" data-toggle="tab"> Add New Event </a>
-    </li>
-    <% events.each(function(event){ %>
-      <li role="presentation">
-      <a href="#<%=event.id%>" role="tab" data-toggle="tab"> <%= event.escape('title') %> </a></li>
 
-    <%  }) %>
 
   </ul>
+
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane active" id="new">
-      <div id="dialog-form" title="Create new user">
 
-        <form class="event-form">
-          <label> Event title</label>
-          <input name="event[title]" required autofocus>
-          <label> Date </label>
-          <input type="date" name="event[event_date]">
-          <br>
-          <input type="checkbox" name="event[purchase_num]" value="true">Purchase Phone Number<br>
-          <button type="submit">Add new event!</button>
-        </form>
-      </div>
-    </div>
-    <% events.each(function(event){ %>
-      <div role="tabpanel" class="tab-pane" id="<%=event.id%>">
-        <li> Date: <%= event.escape('event_date') %></li>
-        <li> Event welcome message: </li>
-        <li> <a href="#events/<%=event.id%>">Show page </a>
-      </div>
-
-    <%  }) %>
 
 
   </div>

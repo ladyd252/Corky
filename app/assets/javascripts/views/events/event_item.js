@@ -1,15 +1,9 @@
 Corky.Views.EventItemView = Backbone.View.extend({
   template: JST["events/event_item"],
-  tagName: "li",
+  className: "tab-pane",
 
-  events:{
-    "click .delete-item" : "deleteEvent",
-    "click .link-show" : "showEvent"
-  },
-
-  deleteEvent: function(event){
-    event.preventDefault();
-    this.model.destroy();
+  initialize: function(){
+    this.$el.attr("id", this.model.id);
   },
 
   render: function(){
