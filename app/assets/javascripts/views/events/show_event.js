@@ -3,6 +3,10 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
   templatePost: JST['posts/show_big'],
   className: "show-page",
 
+  events: {
+    "click .full-screen" : "launchIntoFullscreen"
+  },
+
   initialize: function(){
     this.listenTo(this.model, "sync change", this.render)
     this.listenTo(this.model.posts(), "sync", this.render)
@@ -24,6 +28,20 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
     );
   },
 
+    launchIntoFullscreen: function(event) {
+      event.preventDefault();
+      var element = document.getElementsByClassName("img-slideshow")[0];
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+  },
+
 
   addPostView: function(post){
     var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.collection });
@@ -38,12 +56,12 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
 
 
   slideshow: function () {
-    this.$(".posts").fadeOut("slow", function(){
+    this.$(".img-slideshow").fadeOut("slow", function(){
       var postTemp;
       var currentPost;
       currentPost = this.posts[this.postCount];
       postTemp = this.templatePost({post: currentPost});
-      this.$el.html(postTemp).hide().fadeIn()
+      this.$(".img-slideshow").html(postTemp).hide().fadeIn();;
       if (this.postCount === 0) {
         this.postCount += 1;
       } else if (this.postCount === this.postLength-1) {
