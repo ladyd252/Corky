@@ -1,8 +1,6 @@
 // Place all the styles related to the Post controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
-
 .posts.row{
   &:after{
     content: "";
@@ -19,28 +17,31 @@
     }
     h2{
       position: absolute;
-      z-index: 10;
+      z-index: 1;
       bottom: 10px;
       background-color: rgba(255,255,255, 0.7);
       border-radius: 3px;
     }
 
   }
-  .on-display{
-    z-index: 10;
-    width: auto;
-    height: 100%;
-    img {
-      border-radius: 10px;
-      width: 100%;
-      height: auto;
-    }
-    h2{
-      position: absolute;
-      z-index: 11;
-      bottom: 5px;
-      background-color: rgba(255,255,255, 0.7);
-      border-radius: 3px;
-    }
+}
+
+.on-display{
+  z-index: 2;
+  width: 100%;
+  height: auto;
+  position: relative;
+  img {
+    top: 0px;
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  h2{
+    position: absolute;
+    z-index: 3;
+    bottom: 5px;
+    background-color: rgba(255,255,255, 0.7);
+    border-radius: 3px;
   }
 }

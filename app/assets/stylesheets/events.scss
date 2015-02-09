@@ -3,11 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.show-page{
+  width:90%;
+  margin: auto;
+  position: relative;
+}
+
+
 .index {
   .tabpanel{
     width: 90%;
     margin: auto;
-  
   }
 
   .event-form{
