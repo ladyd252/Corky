@@ -12,9 +12,11 @@ Corky.Views.NewEventFormView= Backbone.View.extend({
     var params = $(event.target).serializeJSON();
     var newEvent = new Corky.Models.Event();
     var collection = this.collection;
+    var that = this;
     newEvent.save(params, {
       success: function(){
         collection.add(newEvent);
+        that.render();
       }
       // error do something with form
     })

@@ -1,4 +1,8 @@
-<button class="delete-event">Delete Event</button>
-<li> Date: <%= event.escape('event_date') %></li>
-<li> Event welcome message: </li>
-<li> <a href="#events/<%=event.id%>">Show page </a>
+<ul class="event-details">
+  <li class="title"> <h1> <%= event.escape('title') %> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></h1>
+  <li class="date"> Date: <%= event.escape('event_date') %></li>
+  <li> <a href="#events/<%=event.id%>">Show page </a>
+</ul>
+
+<br>
+<h3>To edit details, double click detail. To save, click outside of form box.</h3>
