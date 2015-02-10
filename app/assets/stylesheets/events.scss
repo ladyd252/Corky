@@ -16,11 +16,27 @@
   height: 100%;
   padding-bottom: 200px;
   #index-heading{
+    background-color: #00cbe9;
     display: inline-block;
-    width: 100%;
-    padding-left: 65px;
-    padding-top: 60px;
-    padding-bottom: 50px;
+    width: auto;
+    margin-left: 50px;
+    margin-top: 90px;
+    // padding-bottom: 20px;
+    margin-bottom: 5px;
+    -ms-transform: rotate(-9deg); /* IE 9 */
+    -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
+    transform: rotate(-9deg);
+  }
+  #welcome-dashboard{
+    width: 90%;
+    background-color: #F5F5F5;
+    // padding-left: 65px;
+    margin-left: 70px;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 30px;
+    font-size: 20px;
   }
 
 
