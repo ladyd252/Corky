@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require corky
+//= require justified_gallery
 //= require jquery.serializeJSON
 //= require_tree ./utils
 //= require_tree ../templates

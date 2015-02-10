@@ -45,11 +45,11 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
 
   addPostView: function(post){
     var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.collection });
-    this.addSubview(".posts", postItemShow.render());
+    this.addSubview("#posts", postItemShow.render());
   },
 
   removePost: function(post){
-    var selector = ".posts";
+    var selector = "#posts";
     var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
     this.removeSubview(selector, subRemove);
   },
@@ -81,6 +81,11 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
     var content = this.template({event: this.model});
     this.$el.html(content).hide().fadeIn();
     this.attachSubviews();
+    // this.$('#posts').justifiedGallery({
+    //   rowHeight: 70,
+    //   lastRow: 'nojustify',
+    //   margins: 3
+    // });
     this.postLength = this.posts.length;
     setTimeout(this.slideshow.bind(this),3000);
     return this;

@@ -1,6 +1,8 @@
 
  //= require_tree .
+ //= require justified_gallery
  //= require_self
+
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
@@ -65,6 +67,7 @@ body {
   width: 100%;
   top: 0px;
   height: auto;
+  padding-bottom: 100px;
   &:after{
     content: "";
     display: block;
