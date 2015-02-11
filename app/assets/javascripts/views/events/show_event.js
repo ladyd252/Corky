@@ -37,11 +37,6 @@ Corky.Views.EventShow = Backbone.CompositeView.extend({
     var content = this.template({event: this.model});
     this.$el.html(content).hide().fadeIn();
     this.attachSubviews();
-    // this.$('#posts').justifiedGallery({
-    //   rowHeight: 250,
-    //   lastRow: 'nojustify',
-    //   margins: 3
-    // });
     this.postLength = this.posts.length;
     // setTimeout(this.slideshow.bind(this),3000);
     return this;
