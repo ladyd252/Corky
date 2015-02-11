@@ -18,6 +18,18 @@
       color: white;
     }
   }
+  #posts{
+    width: 100%;
+    .item{
+      width: 20%;
+      height: 250px;
+      float: left;
+      img{
+        width: 100%;
+        height: auto
+      }
+    }
+  }
 }
 
 
