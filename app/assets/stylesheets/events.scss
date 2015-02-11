@@ -12,11 +12,12 @@
 .slideshow-view{
   margin-top: 30px;
   padding: 30px;
+  background: #F5F5F5;
 }
 
 
 .index {
-  background: white;
+  background: #F5F5F5;
   width: 100%;
   height: 100%;
   padding-bottom: 200px;
@@ -26,7 +27,6 @@
     width: auto;
     margin-left: 50px;
     margin-top: 90px;
-    // padding-bottom: 20px;
     margin-bottom: 5px;
     -ms-transform: rotate(-9deg); /* IE 9 */
     -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
@@ -34,8 +34,7 @@
   }
   #welcome-dashboard{
     width: 90%;
-    background-color: #F5F5F5;
-    // padding-left: 65px;
+    background-color: #c3dae3;
     margin-left: 70px;
     padding-left: 20px;
     padding-top: 30px;
@@ -61,14 +60,18 @@
     .event-details{
       list-style: none;
     }
+    .form-group{
+      width: 25%
+    }
   }
 
   li{
     a.color-tab{
       font-size: 20px;
       color: black;
+      background-color: #c3dae3;
       &:hover{
-        background-color: #c3dae3;
+        background-color: #8fbacb;
       }
     }
   }

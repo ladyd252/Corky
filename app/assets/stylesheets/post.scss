@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .img-slideshow{
+  background: black;
   display: none;
   width: 100vw;
   height: 100vh;
@@ -10,7 +11,7 @@
   img{
     display: block;
     margin: auto;
-    min-width: 50vw;
+    min-width: 40vw;
     min-height: 50vh;
     padding: 2.5%;
     max-width: 90vw;
