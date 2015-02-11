@@ -1,7 +1,11 @@
 <ul class="event-details">
   <li class="title"> <h1> <%= event.escape('title') %> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></h1>
   <li class="date"> Date: <%= event.escape('event_date') %></li>
-  <li> <a href="#events/<%=event.id%>">Show page </a>
+  <li> <a href="#events/<%=event.id%>">Show page </a> </li>
+  <script>
+  filepicker.setKey("<%= FILEPICKER_API_KEY %>");
+</script>
+  <li> <button class="upload btn btn-primary">Get the party started!</button>
 </ul>
 
 <br>

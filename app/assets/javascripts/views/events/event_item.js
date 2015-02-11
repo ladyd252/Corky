@@ -7,7 +7,8 @@ Corky.Views.EventItemView = Backbone.View.extend({
     "dblclick li.title" : "editTitle",
     "dblclick li.date" : "editDate",
     "blur input.title": "saveTitle",
-    "blur input.date": "saveDate"
+    "blur input.date": "saveDate",
+    "click .upload": "upload"
   },
 
   initialize: function(){
@@ -17,6 +18,23 @@ Corky.Views.EventItemView = Backbone.View.extend({
   deleteEvent: function(event){
     event.preventDefault();
     this.model.destroy();
+  },
+
+  upload: function (){
+    filepicker.pick(function(blob) {
+      var newPost = new Corky.Models.Post({
+        picture_url: blob.url,
+        event_id: this.model.id
+      });
+      newPost.save({}, {
+        success: function () {
+          alert('Image saved!');
+        },
+        error: function() {
+          alert('NOT SAVED')
+        }
+      })
+    })
   },
 
   editTitle: function(){
