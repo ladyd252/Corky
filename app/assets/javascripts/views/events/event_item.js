@@ -45,7 +45,6 @@ Corky.Views.EventItemView = Backbone.View.extend({
 
 
   render: function(){
-    $.cloudinary.config({ cloud_name: 'dd68cgs4l', api_key: '892817762331562'})
     var content = this.template({event: this.model});
     this.$el.html(content);
     return this;
