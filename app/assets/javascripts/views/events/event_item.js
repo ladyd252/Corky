@@ -21,18 +21,19 @@ Corky.Views.EventItemView = Backbone.View.extend({
   },
 
   upload: function (){
+    var that = this;
     filepicker.pick(function(blob) {
       var newPost = new Corky.Models.Post({
         picture_url: blob.url,
-        event_id: this.model.id
+        event_id: that.model.id
       });
       newPost.save({}, {
         success: function () {
-          alert('Image saved!');
+          that.$(".upload-success").css("display","block");
+          setTimeout(function(){
+            that.$(".upload-success").css("display", "none")
+          }, 2000)
         },
-        error: function() {
-          alert('NOT SAVED')
-        }
       })
     })
   },

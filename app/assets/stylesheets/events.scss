@@ -64,6 +64,10 @@
     font-size: 18px;
     .event-details{
       list-style: none;
+      .upload-success{
+        display:none;
+        color: white;
+      }
     }
     .form-group{
       width: 25%
