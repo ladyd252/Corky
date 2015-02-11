@@ -20,7 +20,7 @@ module Api
         num_pics = params["NumMedia"].to_i
         if num_pics > 0
           (0..num_pics-1).each do |i|
-            post_params["picture_url"] = params["MediaUrl".concat(i.to_s)]
+            post_params["picture_url_twilio"] = params["MediaUrl".concat(i.to_s)]
             @post = Post.new(post_params)
             if @post.save
               Pusher.trigger(["event#{event.id}"],"fetchPosts", {more_pictures: 'lol'})

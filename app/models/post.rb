@@ -19,4 +19,12 @@ class Post < ActiveRecord::Base
 
   belongs_to :event
   has_one :user, through: :event, source: :user
+
+  def picture_url_twilio=(twilio_url)
+    url = "https://www.filepicker.io/api/store/S3?key=#{ENV['FILEPICKER_API_KEY']}"
+    options = {body: {"url"=> twilio_url}}
+    response = HTTParty.post(url.to_s, options)
+    self.picture_url = response["url"]
+  end
+
 end

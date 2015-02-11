@@ -77,9 +77,9 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     var content = this.template({event: this.model});
     this.$el.html(content)
     this.attachSubviews();
-    // this.$("#posts").gridalicious({
-    //   gutter: 1
-    // });
+    this.$("#posts").gridalicious({
+      gutter: 1
+    });
     return this;
   }
 
