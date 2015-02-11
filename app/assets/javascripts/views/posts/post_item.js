@@ -6,7 +6,7 @@ Corky.Views.PostItemView = Backbone.View.extend({
     if(this.model.get("picture_url")){
       this.$el.attr("href", this.model.escape("picture_url"))
     }else{
-      this.$el.attr("href", "http://www.solidbackgrounds.com/images/1152x864/1152x864-cream-solid-color-background.jpg")
+      this.$el.attr("href", "https://www.solidbackgrounds.com/images/1152x864/1152x864-cream-solid-color-background.jpg")
     }
   },
 

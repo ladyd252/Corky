@@ -1,6 +1,23 @@
 // Place all the styles related to the Post controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.img-slideshow{
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  img{
+    display: block;
+    margin: auto;
+    min-width: 50vw;
+    min-height: 50vh;
+    padding: 2.5%;
+    max-width: 90vw;
+    max-height: 90vh;
+  }
+}
+
+
 .posts.row{
   &:after{
     content: "";

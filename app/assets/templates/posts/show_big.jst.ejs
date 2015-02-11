@@ -1,8 +1,8 @@
-<div class="on-display">
-  <% if(post.escape("picture_url")){ %>
-    <img src="<%=post.escape("picture_url")%>">
-  <% } %>
-  <% if(post.escape("body")){ %>
-    <h2><%=post.escape("body")%></h2>
-  <% } %>
-</div>
+<% if(event.get("phone_number")){ %>
+  <h2> Text Pictures to: <%= event.escape("phone_number") %></h2>
+<%}%>
+
+<% if(post.get("picture_url")){ %>
+
+<img src="<%= post.escape("picture_url") %>">
+<% } %>
