@@ -40,6 +40,7 @@ gem 'jquery-ui-rails'
 gem 'twilio-ruby'
 gem 'figaro'
 gem 'pusher'
+gem 'filepicker-rails'
 
 gem 'bootstrap-sass'
 group :development, :test do
