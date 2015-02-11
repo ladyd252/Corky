@@ -41,6 +41,8 @@ gem 'twilio-ruby'
 gem 'figaro'
 gem 'pusher'
 gem 'filepicker-rails'
+gem "paperclip"
+gem "aws-sdk"
 
 gem 'bootstrap-sass'
 group :development, :test do
