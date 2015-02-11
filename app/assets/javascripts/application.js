@@ -18,6 +18,7 @@
 //= require backbone
 //= require corky
 //= require jquery.serializeJSON
+//= require jquery.grid-a-licious
 //= require_tree ./utils
 //= require_tree ../templates
 //= require_tree ./models

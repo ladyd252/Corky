@@ -27,6 +27,7 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
   },
 
   startSlideshow: function(){
+    this.$(".img-slideshow").css("display:block")
     setInterval(function(){
       if(this.collection.length>0){
         this.$(".img-slideshow").fadeOut("slow", function(){
@@ -47,9 +48,6 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
 
   launchIntoFullscreen: function(event) {
     event.preventDefault();
-    // setInterval(function(){
-    //   this.$(".img-slideshow").html(slideshowView.render().$el)
-    //   }.bind(this), 2000);
     var element = document.getElementsByClassName("img-slideshow")[0];
     if(element.requestFullscreen) {
       element.requestFullscreen();
@@ -79,6 +77,9 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     var content = this.template({event: this.model});
     this.$el.html(content)
     this.attachSubviews();
+    this.$("#posts").gridalicious({
+      gutter: 1
+    });
     return this;
   }
 
