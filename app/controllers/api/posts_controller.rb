@@ -1,4 +1,5 @@
 module Api
+  require 'pubnum'
   class PostsController < ApplicationController
     skip_before_action :verify_authenticity_token
 
@@ -7,7 +8,6 @@ module Api
       Pusher.app_id = ENV["pusher_app_id"]
       Pusher.key = ENV["pusher_key"]
       Pusher.secret = ENV["pusher_secret"]
-
 
       # check if post came from twilio
       if params["To"]

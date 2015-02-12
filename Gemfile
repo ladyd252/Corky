@@ -43,6 +43,7 @@ gem 'pusher'
 gem 'filepicker-rails'
 gem 'httparty'
 gem 'addressable'
+gem 'pubnub'
 
 gem 'bootstrap-sass'
 group :development, :test do

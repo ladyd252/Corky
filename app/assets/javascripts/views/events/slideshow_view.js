@@ -14,9 +14,8 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.posts(), "add", this.addPostView);
     this.collection.each(this.addPostView.bind(this));
-    var pusher = new Pusher(PUSHER_APP_ID);
     var channelName = 'event'.concat(this.model.id);
-    var channel = pusher.subscribe(channelName);
+    var channel = Corky.pusher.subscribe(channelName);
     var event = this.model;
     this.posts = this.model.posts().models;
     channel.bind('fetchPosts',
