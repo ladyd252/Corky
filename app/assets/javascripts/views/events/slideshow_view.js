@@ -12,21 +12,36 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     this.counter = 0;
     this.collection = this.model.posts();
     this.listenTo(this.model, "sync", this.render);
-    this.listenTo(this.model.posts(), "add", this.addPostView);
-    this.collection.each(this.addPostView.bind(this));
     var channelName = 'event'.concat(this.model.id);
     var channel = Corky.pusher.subscribe(channelName);
     var event = this.model;
     this.posts = this.model.posts().models;
     channel.bind('fetchPosts',
-      function() {
-        event.fetch();
+      function(post_data) {
+        post = new Corky.Models.Post(post_data)
+        event.posts().add(post);
       }
     );
   },
 
   startSlideshow: function(){
+    this.$(".start-show").css("display", "none")
+    this.$(".full-screen").css("display", "block")
     this.$(".img-slideshow").css("display:block")
+    if(this.collection.length>0){
+      this.$(".img-slideshow").fadeOut("slow", function(){
+        var currentPost = this.collection.models[this.counter];
+        var postTemp = this.templateSlideshow({post: currentPost, event: this.model});
+        if (this.counter === 0) {
+           this.counter += 1;
+         } else if (this.counter === this.collection.length-1) {
+             this.counter = 0;
+         } else {
+             this.counter += 1;
+         }
+         this.$(".img-slideshow").html(postTemp).hide().fadeIn("slow");
+       }.bind(this));
+     }
     setInterval(function(){
       if(this.collection.length>0){
         this.$(".img-slideshow").fadeOut("slow", function(){
@@ -47,7 +62,7 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
 
   launchIntoFullscreen: function(event) {
     event.preventDefault();
-    var element = document.getElementsByClassName("img-slideshow")[0];
+    var element = document.getElementsByClassName("whole-show")[0];
     if(element.requestFullscreen) {
       element.requestFullscreen();
     } else if(element.mozRequestFullScreen) {
@@ -59,26 +74,23 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     }
   },
 
-
-  addPostView: function(post){
-    var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.collection });
-    this.addSubview("#posts", postItemShow.render());
-  },
-
-  removePost: function(post){
-    var selector = "#posts";
-    var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
-    this.removeSubview(selector, subRemove);
-  },
+  //
+  // addPostView: function(post){
+  //   var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.collection });
+  //   this.addSubview("#posts", postItemShow.render());
+  // },
+  //
+  // removePost: function(post){
+  //   var selector = "#posts";
+  //   var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
+  //   this.removeSubview(selector, subRemove);
+  // },
 
 
   render: function(){
     var content = this.template({event: this.model});
     this.$el.html(content)
-    this.attachSubviews();
-    this.$("#posts").gridalicious({
-      gutter: 1
-    });
+    // this.attachSubviews();
     return this;
   }
 

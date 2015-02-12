@@ -3,6 +3,10 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
   template: JST['events/index'],
   className: "index",
 
+  events: {
+    "click .nav-tabs": "resizeWindow"
+  },
+
   initialize: function(){
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addEventView);
@@ -12,6 +16,7 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
   },
 
   addEventView: function(event){
+    this.collection.getOrFetch(event.id)
     var eventItemShow = new Corky.Views.EventItemView({ model: event, collection: this.collection });
     this.addSubview(".tab-content", eventItemShow.render());
     var eventTabShow = new Corky.Views.EventTab({ model: event, collection: this.collection });
@@ -38,13 +43,16 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
     this.addSubview(".tab-content", newEventFormView.render());
   },
 
+
   render: function(){
     var content = this.template({events: this.collection})
     this.$el.html(content);
     this.attachSubviews();
     return this;
+  },
+
+  resizeWindow: function () {
+    $(window).resize();
   }
-
-
 
 });

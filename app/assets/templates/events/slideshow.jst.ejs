@@ -1,10 +1,15 @@
 <h1> <%= event.escape("title") %> </h1>
 
-<button class="full-screen"> Fullscreen Slideshow!</button>
-<button class="start-show"> Start Slideshow!</button>
+<button class="btn btn-lg btn-info start-show"> Start Slideshow!</button>
+
+<button class="full-screen btn btn-lg btn-success"> Fullscreen Slideshow!</button>
+
+<div class="whole-show">
+<% if(event.get("phone_number")){ %>
+  <h2> Text Pictures to: <%= event.escape("phone_number") %></h2>
+<%}%>
 
 <div class="img-slideshow">
 
 </div>
-
-<div id="posts"></div>
+</div>

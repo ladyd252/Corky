@@ -6,13 +6,16 @@ Corky.Collections.Events = Backbone.Collection.extend({
     var event = this.get(id);
     if(!event){
       event = new Corky.Models.Event({id: id});
+      var events = this;
+      event.fetch({
+        success: function(){
+          events.add(event);
+        }
+      })
     }
-    var events = this;
-    event.fetch({
-      success: function(){
-        events.add(event);
-      }
-    })
+    else{
+      event.fetch();
+    }
     return event
   }
 

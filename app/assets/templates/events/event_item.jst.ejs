@@ -2,6 +2,7 @@
   filepicker.setKey("<%= FILEPICKER_API_KEY %>");
 </script>
 
+<div class="notes">
 <ul class="event-details">
   <li class="title"> <h1> <%= event.escape('title') %> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></h1>
   <li class="date"> Date: <%= event.escape('event_date') %></li>
@@ -11,3 +12,14 @@
 
 <br>
 <h3>To edit details, double click detail. To save, click outside of form box.</h3>
+</div>
+
+<div id="posts">
+  <% event.posts().each(function(post){ %>
+    <% if(post.get("picture_url")){ %>
+      <div class="item">
+        <img src="<%= post.escape("picture_url") %>">
+      </div>
+    <%}%>
+  <%})%>
+</div>

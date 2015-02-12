@@ -1,4 +1,4 @@
-Corky.Views.EventItemView = Backbone.View.extend({
+Corky.Views.EventItemView = Backbone.CompositeView.extend({
   template: JST["events/event_item"],
   className: "tab-pane",
 
@@ -13,6 +13,9 @@ Corky.Views.EventItemView = Backbone.View.extend({
 
   initialize: function(){
     this.$el.attr("id", this.model.id);
+    this.listenTo(this.model.posts(), "add sync", this.render);
+    // this.model.posts().each(this.addPostView.bind(this));
+    this.listenTo(this.model, "sync", this.render);
   },
 
   deleteEvent: function(event){
@@ -30,6 +33,7 @@ Corky.Views.EventItemView = Backbone.View.extend({
       newPost.save({}, {
         success: function () {
           that.$(".upload-success").css("display","block");
+          that.model.posts().add(newPost)
           setTimeout(function(){
             that.$(".upload-success").css("display", "none")
           }, 2000)
@@ -63,9 +67,26 @@ Corky.Views.EventItemView = Backbone.View.extend({
   },
 
 
+  // addPostView: function(post){
+  //   var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.model.posts() });
+  //   this.addSubview("#posts", postItemShow.render());
+  //   $(window).resize();
+  // },
+  //
+  // removePost: function(post){
+  //   var selector = "#posts";
+  //   var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
+  //   this.removeSubview(selector, subRemove);
+  // },
+
+
+
   render: function(){
     var content = this.template({event: this.model});
     this.$el.html(content);
+    // this.attachSubviews();
+    this.$("#posts").gridalicious({
+    });
     return this;
   }
 })

@@ -3,26 +3,31 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.show-page{
-  width:90%;
-  margin: auto;
-  position: relative;
-}
-
 .slideshow-view{
+  width: 80%;
+  margin: auto;
+  min-height: 800px;
   padding: 30px;
   background: #F5F5F5;
-  .img-slideshow{
-    h2{
-      color: white;
-    }
+  &:after{
+    content: "";
+    clear: both;
+    display:block;
+  }
+  .full-screen{
+    display:none;
+    margin: 20px;
+  }
+  .start-show{
+    margin: 20px;
   }
 }
 
 
 .index {
   background: #F5F5F5;
-  width: 100%;
+  width: 80%;
+  margin: auto;
   height: 100%;
   padding-bottom: 200px;
   #index-heading{
@@ -32,17 +37,17 @@
     margin-left: 50px;
     margin-top: 90px;
     margin-bottom: 5px;
-    // -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
-    // -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
-    // box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
     -ms-transform: rotate(-9deg); /* IE 9 */
     -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
     transform: rotate(-9deg);
   }
   #welcome-dashboard{
-    // -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
-    // -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
-    // box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
     width: 90%;
     background-color: #c3dae3;
     margin-left: 70px;
@@ -61,13 +66,12 @@
   }
 
   .tab-content{
-    -webkit-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-    -moz-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-    box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-    width: 100%;
+    -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+    box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
     margin: auto;
     background-color: #00cbe9;
-    height: 100%;
+    height: auto;
     border-radius: 0px 10px 10px 10px;
     padding: 20px;
     padding-bottom: 200px;
@@ -77,27 +81,48 @@
       display: block;
       clear: both;
     }
-    .event-details{
-      float: left;
-      padding: 10px;
-      padding-left: 100px;
-      width: 60%;
-      position: relative;
-      top: 20px;
-      background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
-      -webkit-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-      -moz-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-      box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
-      list-style: none;
-      &:before{
-        content: url("http://png-3.findicons.com/files/icons/766/base_software/128/paperclip4_black.png");
-        top: -50px;
-        right: 50px;
-        position: absolute;
+    .notes{
+      &:after{
+        content: "";
+        display: block;
+        clear: both;
       }
-      .upload-success{
-        display:none;
-        color: white;
+      .event-details{
+        float: left;
+        padding: 10px;
+        padding-left: 100px;
+        padding-bottom: 100px;
+        width: 60%;
+        position: relative;
+        top: 20px;
+        background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+        -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        list-style: none;
+        &:after{
+          content: "";
+          clear: both;
+          display:block;
+        }
+        &:before{
+          content: url("http://png-3.findicons.com/files/icons/766/base_software/128/paperclip4_black.png");
+          top: -50px;
+          right: 50px;
+          position: absolute;
+        }
+        .upload-success{
+          display:none;
+          color: white;
+        }
+      }
+    }
+    #posts{
+      .item{
+        background: white;
+        -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
       }
     }
     h3{

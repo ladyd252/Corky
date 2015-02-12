@@ -8,9 +8,12 @@
   width: 100vw;
   height: 100vh;
   position: relative;
+  margin: 20px;
   img{
     display: block;
     margin: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     min-width: 40vw;
     min-height: 50vh;
     padding: 2.5%;
