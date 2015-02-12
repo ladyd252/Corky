@@ -129,6 +129,9 @@
         -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
         -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
         box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
+        -ms-transform: rotate(4deg); /* IE 9 */
+        -webkit-transform: rotate(4deg); /* Chrome, Safari, Opera */
+        transform: rotate(4deg);
       }
     }
     h3{
