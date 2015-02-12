@@ -87,6 +87,16 @@
         display: block;
         clear: both;
       }
+      .event-actions{
+        list-style: none;
+        button{
+          margin: 3px;
+        }
+        .upload-success{
+          display:none;
+          color: white;
+        }
+      }
       .event-details{
         float: left;
         padding: 10px;
@@ -95,11 +105,11 @@
         width: 60%;
         position: relative;
         top: 20px;
+        list-style: none;
         background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
         -webkit-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
         -moz-box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
         box-shadow: 10px 10px 25px -5px rgba(82,82,82,1);
-        list-style: none;
         &:after{
           content: "";
           clear: both;
@@ -110,10 +120,6 @@
           top: -50px;
           right: 50px;
           position: absolute;
-        }
-        .upload-success{
-          display:none;
-          color: white;
         }
       }
     }

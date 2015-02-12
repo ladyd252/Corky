@@ -16,10 +16,12 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     var channel = Corky.pusher.subscribe(channelName);
     var event = this.model;
     this.posts = this.model.posts().models;
+    var that = this;
     channel.bind('fetchPosts',
       function(post_data) {
-        post = new Corky.Models.Post(post_data)
-        event.posts().add(post);
+        var post = new Corky.Models.Post(post_data);
+        that.collection.add(post)
+        that.counter = that.collection.indexOf(post);
       }
     );
   },

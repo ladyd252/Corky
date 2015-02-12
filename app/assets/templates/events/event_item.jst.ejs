@@ -3,15 +3,22 @@
 </script>
 
 <div class="notes">
-<ul class="event-details">
-  <li class="title"> <h1> <%= event.escape('title') %> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></h1>
-  <li class="date"> Date: <%= event.escape('event_date') %></li>
-  <li> <button class="upload btn btn-primary">Get the party started!</button> <span class="upload-success">Picture saved!</span></li>
-  <li> <a href="#events/<%=event.id%>">Show page </a> </li>
-</ul>
+  <div class="main-note">
+    <ul class="event-details">
+      <li class="title"> <h1> <%= event.escape('title') %> </h1>
+      <li class="date"> Date: <%= event.escape('event_date') %></li>
+      <li class="number"> Phone number: <%= event.escape('phone_number') %></li>
+      <li> Event Actions:</li>
+      <ul class="event-actions">
+        <li> <a href="#events/<%=event.id%>"><button class="slideshow btn btn-success"> Slideshow! </button> </a> </li>
+        <li> <button class="upload btn btn-primary">Upload pictures and get the party started!</button> <span class="upload-success">Picture saved!</span></li>
+        <li> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></li>
+      </ul>
+    </ul>
+  </div>
 
-<br>
-<h3>To edit details, double click detail. To save, click outside of form box.</h3>
+  <br>
+  <h3>To edit details, double click detail. To save, click outside of form box.</h3>
 </div>
 
 <div id="posts">

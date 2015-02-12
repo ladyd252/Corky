@@ -4,6 +4,7 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
 
   events:{
     "click .delete-event" : "deleteEvent",
+    "click .slideshow" : "slideshowLink",
     "dblclick li.title" : "editTitle",
     "dblclick li.date" : "editDate",
     "blur input.title": "saveTitle",
@@ -16,6 +17,11 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
     this.listenTo(this.model.posts(), "add sync", this.render);
     // this.model.posts().each(this.addPostView.bind(this));
     this.listenTo(this.model, "sync", this.render);
+  },
+
+  slideshowLink: function(event){
+    event.preventDefault;
+    Backbone.history.navigate('/events/'+ this.model.id + '/slideshow', {trigger:true})
   },
 
   deleteEvent: function(event){

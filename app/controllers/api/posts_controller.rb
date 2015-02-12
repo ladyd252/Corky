@@ -22,7 +22,7 @@ module Api
             post_params["picture_url_twilio"] = params["MediaUrl".concat(i.to_s)]
             @post = Post.new(post_params)
             if @post.save
-              Pusher.trigger(["event#{event.id}"],"fetchPosts", post.to_json)
+              Pusher.trigger(["event#{event.id}"],"fetchPosts",  @post)
               render json: {}, status: 200
             else
               render json: @post.errors.full_messages, status: 422
@@ -33,7 +33,7 @@ module Api
           @post = Post.new(post_params)
           if @post.save
 
-            Pusher.trigger(["event#{event.id}"],"fetchPosts", post.to_json)
+            Pusher.trigger(["event#{event.id}"],"fetchPosts", @post)
             render json: {}, status: 200
           else
             render json: @post.errors.full_messages, status: 422
@@ -46,7 +46,7 @@ module Api
         @post = Post.new(post_params_filepicker)
         if @post.save
 
-          Pusher.trigger(["event#{post_params_filepicker[:event_id]}"],"fetchPosts", post.to_json)
+          Pusher.trigger(["event#{post_params_filepicker[:event_id]}"],"fetchPosts",  @post)
           render json: {}, status: 200
         else
           render json: @post.errors.full_messages, status: 422
