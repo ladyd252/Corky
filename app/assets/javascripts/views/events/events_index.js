@@ -26,7 +26,9 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
     subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === event} );
     this.removeSubview(selector, subRemove);
     var newActive = this.$(".nav-tabs > li")[0]
+    var newPanel = this.$(".tab-pane")[0]
     $(newActive).addClass("active")
+    $(newPanel).addClass("active")
   },
 
   addNewEventView: function(){

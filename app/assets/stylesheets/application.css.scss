@@ -25,6 +25,7 @@ li, p, label, input {
   font-family: 'Maven Pro', sans-serif;
 }
 .navbar{
+  border:none;
   .navbar-brand{
     font-family: 'Pacifico', cursive;
     color: white;
@@ -61,12 +62,14 @@ li, p, label, input {
 }
 
 body {
-    padding-top: 30px;
+  padding-top: 30px;
+  background: #F5F5F5;
 }
 
 #content{
   position: relative;
-  width: 100%;
+  margin: auto;
+  width: 80%;
   top: 0px;
   height: auto;
   &:after{

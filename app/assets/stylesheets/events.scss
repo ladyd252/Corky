@@ -32,11 +32,17 @@
     margin-left: 50px;
     margin-top: 90px;
     margin-bottom: 5px;
+    // -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    // -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    // box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
     -ms-transform: rotate(-9deg); /* IE 9 */
     -webkit-transform: rotate(-9deg); /* Chrome, Safari, Opera */
     transform: rotate(-9deg);
   }
   #welcome-dashboard{
+    // -webkit-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    // -moz-box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
+    // box-shadow: 7px 6px 5px 0px rgba(0,0,0,0.75);
     width: 90%;
     background-color: #c3dae3;
     margin-left: 70px;
@@ -55,21 +61,63 @@
   }
 
   .tab-content{
-    padding: 10px;
+    -webkit-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+    -moz-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+    box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+    width: 100%;
+    margin: auto;
     background-color: #00cbe9;
     height: 100%;
     border-radius: 0px 10px 10px 10px;
+    padding: 20px;
     padding-bottom: 200px;
     font-size: 18px;
+    &:after{
+      content: "";
+      display: block;
+      clear: both;
+    }
     .event-details{
+      float: left;
+      padding: 10px;
+      padding-left: 100px;
+      width: 60%;
+      position: relative;
+      top: 20px;
+      background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+      -webkit-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+      -moz-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+      box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
       list-style: none;
+      &:before{
+        content: url("http://png-3.findicons.com/files/icons/766/base_software/128/paperclip4_black.png");
+        top: -50px;
+        right: 50px;
+        position: absolute;
+      }
       .upload-success{
         display:none;
         color: white;
       }
     }
+    h3{
+      display:block;
+      background:#FCF0AD;
+      -webkit-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+      -moz-box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+      box-shadow: 7px 6px 5px 0px rgba(50,50,50,0.75);
+      font-size: 16px;
+      float:left;
+      width: 30%;
+      margin:3%;
+      padding: 10px;
+      min-height: 150px;
+      -ms-transform: rotate(9deg); /* IE 9 */
+      -webkit-transform: rotate(9deg); /* Chrome, Safari, Opera */
+      transform: rotate(9deg);
+    }
     .form-group{
-      width: 25%
+      width: 45%
     }
   }
 
