@@ -23,7 +23,7 @@ module Api
             @post = Post.new(post_params)
             if @post.save
               Pusher.trigger(["event#{event.id}"],"fetchPosts",  @post)
-              render json: {}, status: 200
+              render json: "", status: 200
             else
               render json: @post.errors.full_messages, status: 422
             end
@@ -34,7 +34,7 @@ module Api
           if @post.save
 
             Pusher.trigger(["event#{event.id}"],"fetchPosts", @post)
-            render json: {}, status: 200
+            render json: "", status: 200
           else
             render json: @post.errors.full_messages, status: 422
           end
@@ -45,7 +45,7 @@ module Api
       else
         @post = Post.new(post_params_filepicker)
         if @post.save
-          # 
+          #
           # Pusher.trigger(["event#{post_params_filepicker[:event_id]}"],"fetchPosts",  @post)
           render json: {}, status: 200
         else
