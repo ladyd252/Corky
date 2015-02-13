@@ -16,7 +16,7 @@ Corky.Views.NewEventFormView= Backbone.View.extend({
     newEvent.save(params, {
       success: function(){
         collection.add(newEvent);
-        that.render();
+        Backbone.history.navigate("events/" + newEvent.id, {trigger: true})
       }
       // error do something with form
     })

@@ -8,10 +8,18 @@ Corky.Views.SlideshowView = Backbone.View.extend({
     this.collection = this.model.posts();
     this.listenTo(this.model, "sync", this.render);
     this.channelName = 'event'.concat(this.model.id);
-    var channel = Corky.pusher.subscribe(this.channelName);
-    var event = this.model;
-    this.posts = this.model.posts().models;
     var that = this;
+    var suscribed = Corky.pusher.channels.all().some(function(channel){
+      return channel.name === that.channelName;
+    })
+    if(!suscribed){
+      var channel = Corky.pusher.subscribe(this.channelName);
+    }else{
+      var channel = _(Corky.pusher.channels.all()).where(function(channel){
+        return channel.name === that.channelName
+      })[0];
+    }
+
     channel.bind('fetchPosts',
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
@@ -19,6 +27,7 @@ Corky.Views.SlideshowView = Backbone.View.extend({
         that.counter = that.collection.indexOf(post);
       }
     );
+    this.posts = this.model.posts().models;
   },
 
   startSlideshow: function(){
