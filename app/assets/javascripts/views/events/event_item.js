@@ -15,14 +15,19 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
   initialize: function(){
     this.$el.attr("id", this.model.id);
     this.selector = "#slideshow-" + this.model.id;
-    this.listenTo(this.model.posts(), "add sync", this.render);
     this.listenTo(this.model, "sync", this.render);
     this.addSlideshowView();
+    this.addEventShowView();
   },
 
   addSlideshowView: function(){
     this.slideShow = new Corky.Views.SlideshowView({ model: this.model});
     this.addSubview(this.selector, this.slideShow.render());
+  },
+
+  addEventShowView: function(){
+    var eventShowView = new Corky.Views.EventShow({model: this.model});
+    this.addSubview("#posts", eventShowView.render())
   },
 
   slideshowLink: function(event){

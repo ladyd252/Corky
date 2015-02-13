@@ -1,11 +1,7 @@
-<h1> <%= event.escape("title") %> </h1>
-<h2> Text your pictures to:
-  <% if(event.get("phone_number")){ %>
-  <%= event.escape("phone_number") %>
-  <% } %>
-</h2>
-<a href="#">Back to Index</a>
-<button class="full-screen"> Launch Slideshow!</button>
-
-<div id="posts">
-</div>
+<% event.posts().each(function(post){ %>
+  <% if(post.get("picture_url")){ %>
+    <div class="item">
+      <img src="<%= post.escape("picture_url") %>">
+    </div>
+  <%}%>
+<%})%>

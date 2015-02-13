@@ -22,13 +22,7 @@
 </div>
 
 <div id="posts">
-  <% event.posts().each(function(post){ %>
-    <% if(post.get("picture_url")){ %>
-      <div class="item">
-        <img src="<%= post.escape("picture_url") %>">
-      </div>
-    <%}%>
-  <%})%>
+
 </div>
 
 <div id="slideshow-<%=event.id %>">
