@@ -51,7 +51,7 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
       var event = state ? 'FullscreenOn' : 'FullscreenOff';
       if(event === 'FullscreenOff'){
         that.$(id).css("display", "none");
-        window.clearInterval();
+        window.clearInterval(that.slideShow.intervalId);
         that.render();
       }
     });
