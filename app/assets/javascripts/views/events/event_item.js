@@ -51,6 +51,7 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
       var event = state ? 'FullscreenOn' : 'FullscreenOff';
       if(event === 'FullscreenOff'){
         that.$(id).css("display", "none");
+        that.render();
       }
     });
   },
@@ -108,8 +109,6 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
     this.$el.html(content);
     this.$(this.selector).css("display", "none");
     this.attachSubviews();
-    this.$("#posts").gridalicious({
-    });
     return this;
   }
 })

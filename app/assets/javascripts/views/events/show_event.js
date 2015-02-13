@@ -4,12 +4,15 @@ Corky.Views.EventShow = Backbone.View.extend({
 
 
   initialize: function(){
-    this.listenTo(this.model.posts(), "sync add", this.render)
+    this.listenTo(this.model.posts(), "add", this.render)
+    this.listenTo(this.model, "sync", this.render)
   },
 
   render: function(){
     var content = this.template({event: this.model});
-    this.$el.html(content).hide().fadeIn();
+    this.$el.html(content);
+    this.$(".post-grid").gridalicious({
+    });
     return this;
   }
 
