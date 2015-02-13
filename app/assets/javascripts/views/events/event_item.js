@@ -101,6 +101,7 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
   render: function(){
     var content = this.template({event: this.model});
     this.$el.html(content);
+    this.$(this.selector).css("display", "none");
     this.attachSubviews();
     this.$("#posts").gridalicious({
     });
