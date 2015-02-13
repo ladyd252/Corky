@@ -23,7 +23,6 @@ Corky.Views.SlideshowView = Backbone.View.extend({
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
         that.collection.add(post)
-        that.counter = that.collection.indexOf(post);
       }
     );
     this.posts = this.model.posts().models;
