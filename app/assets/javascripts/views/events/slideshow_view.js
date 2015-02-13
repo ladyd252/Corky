@@ -1,19 +1,14 @@
-Corky.Views.SlideshowView = Backbone.CompositeView.extend({
+Corky.Views.SlideshowView = Backbone.View.extend({
   template: JST["events/slideshow"],
   templateSlideshow: JST['posts/show_big'],
   className: "slideshow-view",
-
-  events:{
-    "click .full-screen" : "launchIntoFullscreen",
-    "click .start-show" : "startSlideshow"
-  },
 
   initialize: function(){
     this.counter = 0;
     this.collection = this.model.posts();
     this.listenTo(this.model, "sync", this.render);
-    var channelName = 'event'.concat(this.model.id);
-    var channel = Corky.pusher.subscribe(channelName);
+    this.channelName = 'event'.concat(this.model.id);
+    var channel = Corky.pusher.subscribe(this.channelName);
     var event = this.model;
     this.posts = this.model.posts().models;
     var that = this;
@@ -27,9 +22,6 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
   },
 
   startSlideshow: function(){
-    this.$(".start-show").css("display", "none")
-    this.$(".full-screen").css("display", "block")
-    this.$(".img-slideshow").css("display:block")
     if(this.collection.length>0){
       this.$(".img-slideshow").fadeOut("slow", function(){
         var currentPost = this.collection.models[this.counter];
@@ -76,24 +68,16 @@ Corky.Views.SlideshowView = Backbone.CompositeView.extend({
     }
   },
 
-  //
-  // addPostView: function(post){
-  //   var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.collection });
-  //   this.addSubview("#posts", postItemShow.render());
-  // },
-  //
-  // removePost: function(post){
-  //   var selector = "#posts";
-  //   var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
-  //   this.removeSubview(selector, subRemove);
-  // },
-
 
   render: function(){
     var content = this.template({event: this.model});
     this.$el.html(content)
-    // this.attachSubviews();
     return this;
+  },
+
+  remove: function () {
+    Backbone.View.prototype.remove.call(this);
+    Corky.pusher.unsubscribe(this.channelName);
   }
 
 })

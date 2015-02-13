@@ -2,13 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.img-slideshow{
+.slideshow-view{
   background: black;
-  display: none;
   width: 100vw;
   height: 100vh;
   position: relative;
-  margin: 20px;
+  h1,h2{
+    padding: 40px;
+    color: white;
+    margin:auto;
+    text-align:center;
+  }
   img{
     display: block;
     margin: auto;

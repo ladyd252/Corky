@@ -1,8 +1,4 @@
-<h1> <%= event.escape("title") %> </h1>
-
-<button class="btn btn-lg btn-info start-show"> Start Slideshow!</button>
-
-<button class="full-screen btn btn-lg btn-success"> Fullscreen Slideshow!</button>
+<h1 class="event-title"> <%= event.escape("title") %> </h1>
 
 <div class="whole-show">
 <% if(event.get("phone_number")){ %>

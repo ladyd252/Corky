@@ -3,3 +3,8 @@
 
 <img src="<%= post.escape("picture_url") %>">
 <% } %>
+
+<% if(post.get("body")){ %>
+
+<h2> <%= post.escape("body") %></h2>
+<% } %>

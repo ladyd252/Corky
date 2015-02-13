@@ -10,7 +10,7 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
   initialize: function(){
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addEventView);
-    this.listenTo(this.collection, "remove", this.removeEvent)
+    this.listenTo(this.collection, "remove", this.removeEvent);
     this.addNewEventView();
     this.collection.each(this.addEventView.bind(this));
   },
@@ -42,7 +42,6 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
     var newEventFormView = new Corky.Views.NewEventFormView({collection: this.collection});
     this.addSubview(".tab-content", newEventFormView.render());
   },
-
 
   render: function(){
     var content = this.template({events: this.collection})

@@ -14,14 +14,40 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
 
   initialize: function(){
     this.$el.attr("id", this.model.id);
+    this.selector = "#slideshow-" + this.model.id;
     this.listenTo(this.model.posts(), "add sync", this.render);
-    // this.model.posts().each(this.addPostView.bind(this));
     this.listenTo(this.model, "sync", this.render);
+    this.addSlideshowView();
+  },
+
+  addSlideshowView: function(){
+    this.slideShow = new Corky.Views.SlideshowView({ model: this.model});
+    this.addSubview(this.selector, this.slideShow.render());
   },
 
   slideshowLink: function(event){
-    event.preventDefault;
-    Backbone.history.navigate('/events/'+ this.model.id + '/slideshow', {trigger:true})
+    event.preventDefault();
+    var id = "#slideshow-" + this.model.id;
+    this.$(id).css("display", "block");
+    this.slideShow.startSlideshow();
+    var element = document.getElementById("slideshow-" + this.model.id);
+    if(element.requestFullscreen) {
+      element.requestFullscreen();
+    } else if(element.mozRequestFullScreen) {
+      element.mozRequestFullScreen();
+    } else if(element.webkitRequestFullscreen) {
+      element.webkitRequestFullscreen();
+    } else if(element.msRequestFullscreen) {
+      element.msRequestFullscreen();
+    }
+    var that = this;
+    this.$(id).bind('webkitfullscreenchange mozfullscreenchange fullscreenchange', function(e) {
+      var state = document.fullScreen || document.mozFullScreen || document.webkitIsFullScreen;
+      var event = state ? 'FullscreenOn' : 'FullscreenOff';
+      if(event === 'FullscreenOff'){
+        that.$(id).css("display", "none");
+      }
+    });
   },
 
   deleteEvent: function(event){
@@ -72,25 +98,10 @@ Corky.Views.EventItemView = Backbone.CompositeView.extend({
     this.render()
   },
 
-
-  // addPostView: function(post){
-  //   var postItemShow = new Corky.Views.PostItemView({ model: post, collection: this.model.posts() });
-  //   this.addSubview("#posts", postItemShow.render());
-  //   $(window).resize();
-  // },
-  //
-  // removePost: function(post){
-  //   var selector = "#posts";
-  //   var subRemove = _(this.subviews(selector)).find(function(sub){return sub.model === post} );
-  //   this.removeSubview(selector, subRemove);
-  // },
-
-
-
   render: function(){
     var content = this.template({event: this.model});
     this.$el.html(content);
-    // this.attachSubviews();
+    this.attachSubviews();
     this.$("#posts").gridalicious({
     });
     return this;

@@ -10,7 +10,7 @@
       <li class="number"> Phone number: <%= event.escape('phone_number') %></li>
       <li> Event Actions:</li>
       <ul class="event-actions">
-        <li> <a href="#events/<%=event.id%>"><button class="slideshow btn btn-success"> Slideshow! </button> </a> </li>
+        <li> <button class="slideshow btn btn-success"> Slideshow! </button> </li>
         <li> <button class="upload btn btn-primary">Upload pictures and get the party started!</button> <span class="upload-success">Picture saved!</span></li>
         <li> <button class="btn btn-sm btn-danger delete-event">Delete Event</button></li>
       </ul>
@@ -29,4 +29,7 @@
       </div>
     <%}%>
   <%})%>
+</div>
+
+<div id="slideshow-<%=event.id %>">
 </div>

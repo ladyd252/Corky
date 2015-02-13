@@ -4,22 +4,12 @@
 
 
 .slideshow-view{
-  width: 80%;
-  margin: auto;
-  min-height: 800px;
-  padding: 30px;
+  width: 100%;
   background: #F5F5F5;
   &:after{
     content: "";
     clear: both;
     display:block;
-  }
-  .full-screen{
-    display:none;
-    margin: 20px;
-  }
-  .start-show{
-    margin: 20px;
   }
 }
 
@@ -58,6 +48,9 @@
     font-size: 20px;
   }
 
+  #slideshow{
+    display: none;
+  }
 
   .tabpanel{
     width: 90%;
