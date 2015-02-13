@@ -19,7 +19,7 @@ Corky.Views.SlideshowView = Backbone.View.extend({
         return channel.name === that.channelName
       })[0];
     }
-
+    this.currentImage = -1;
     channel.bind('fetchPosts',
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
@@ -69,7 +69,6 @@ Corky.Views.SlideshowView = Backbone.View.extend({
 
 
   render: function(){
-    this.currentImage = -1;
     var content = this.template({event: this.model});
     this.$el.html(content)
     return this;
