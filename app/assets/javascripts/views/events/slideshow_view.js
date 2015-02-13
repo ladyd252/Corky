@@ -20,8 +20,6 @@ Corky.Views.SlideshowView = Backbone.View.extend({
       })[0];
     }
 
-    debugger
-
     channel.bind('fetchPosts',
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
@@ -72,9 +70,5 @@ Corky.Views.SlideshowView = Backbone.View.extend({
     return this;
   },
 
-  remove: function () {
-    Backbone.View.prototype.remove.call(this);
-    Corky.pusher.unsubscribe(this.channelName);
-  }
 
 })
