@@ -20,6 +20,8 @@ Corky.Views.SlideshowView = Backbone.View.extend({
       })[0];
     }
 
+    debugger
+
     channel.bind('fetchPosts',
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
@@ -61,20 +63,6 @@ Corky.Views.SlideshowView = Backbone.View.extend({
         }.bind(this));
       }
     }.bind(this), 4000)
-  },
-
-  launchIntoFullscreen: function(event) {
-    event.preventDefault();
-    var element = document.getElementsByClassName("whole-show")[0];
-    if(element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if(element.mozRequestFullScreen) {
-      element.mozRequestFullScreen();
-    } else if(element.webkitRequestFullscreen) {
-      element.webkitRequestFullscreen();
-    } else if(element.msRequestFullscreen) {
-      element.msRequestFullscreen();
-    }
   },
 
 
