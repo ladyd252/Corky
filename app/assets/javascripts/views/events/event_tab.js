@@ -4,6 +4,7 @@ Corky.Views.EventTab = Backbone.View.extend({
 
   initialize: function(){
     this.listenTo(this.model, "change", this.render)
+    this.$el.attr("class", this.model.id);
   },
 
   render: function(){

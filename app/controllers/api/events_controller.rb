@@ -15,6 +15,7 @@ module Api
     def create
       @event = current_user.events.new(event_params)
       @event.phone_url = api_posts_url
+      @event.purchase_num
 
       if @event.save
         render :show

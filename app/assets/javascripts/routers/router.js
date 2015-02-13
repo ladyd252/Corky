@@ -10,7 +10,7 @@ Corky.Routers.Router = Backbone.Router.extend({
     "" : "index",
     "events/new" : "new",
     "events/:id/slideshow" : "slideshow",
-    "events/:id" : "slideshow",
+    "events/:id" : "show",
   },
 
   index: function(){
@@ -19,13 +19,13 @@ Corky.Routers.Router = Backbone.Router.extend({
   },
 
   new: function(){
-
+    var indexView = new Corky.Views.EventsIndex({collection: this.collection});
+    this._swapView(indexView);
   },
 
   show: function(id){
-    var eventToShow = this.collection.getOrFetch(id);
-    var showView = new Corky.Views.EventShow({model: eventToShow});
-    this._swapView(showView);
+    var indexView = new Corky.Views.EventsIndex({collection: this.collection, eventId: id, currentEventId: id});
+    this._swapView(indexView);
   },
 
   slideshow: function(id){

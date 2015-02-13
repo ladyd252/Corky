@@ -1,7 +1,7 @@
 Corky.Views.NewEventView = Backbone.View.extend({
   template: JST["events/new_event"],
   tagName: "li",
-  className: "active",
+  className: "new active",
 
   render: function(){
     var content = this.template();

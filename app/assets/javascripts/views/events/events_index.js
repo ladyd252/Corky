@@ -4,15 +4,33 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
   className: "index",
 
   events: {
-    "click .nav-tabs": "resizeWindow"
+    "click .nav-tabs": "resizeWindow",
+    "click .nav-tabs > li": "changeCurrentActive"
   },
 
-  initialize: function(){
+  initialize: function(options){
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addEventView);
     this.listenTo(this.collection, "remove", this.removeEvent);
     this.addNewEventView();
     this.collection.each(this.addEventView.bind(this));
+    this.currentActiveSelector = "new";
+    if(options.currentEventId){
+      this.currentEventId = options.currentEventId;
+    }
+  },
+
+  changeTab: function(id){
+    this.$("#" + this.currentActiveSelector).removeClass("active");
+    this.$("#" + id).addClass("active");
+    this.$("." + this.currentActiveSelector).removeClass("active");
+    this.$("." + id).addClass("active");
+  },
+
+  changeCurrentActive: function(event){
+    var selector = $(event.currentTarget);
+    var eventId = selector.attr("class");
+    Backbone.history.navigate("events/" + eventId, {trigger: true})
   },
 
   addEventView: function(event){
@@ -47,6 +65,9 @@ Corky.Views.EventsIndex = Backbone.CompositeView.extend({
     var content = this.template({events: this.collection})
     this.$el.html(content);
     this.attachSubviews();
+    if(this.currentEventId){
+      this.changeTab(this.currentEventId)
+    }
     return this;
   },
 

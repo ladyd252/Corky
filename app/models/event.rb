@@ -24,25 +24,22 @@ class Event < ActiveRecord::Base
 
   attr_accessor :phone_url
 
-  def purchase_num=(val)
+  def purchase_num
+    account_sid = ENV["twilio_account_id"]
+    auth_token = ENV["twilio_auth_token"]
+    @client = Twilio::REST::Client.new account_sid, auth_token
 
-    if val == "true"
-      account_sid = ENV["twilio_account_id"]
-      auth_token = ENV["twilio_auth_token"]
-      @client = Twilio::REST::Client.new account_sid, auth_token
+    @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => "415")
 
-      @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => "415")
-
-      # Purchase the number
-      @number = @numbers[0]
-      incoming_number = @client.account.incoming_phone_numbers.create(
-        phone_number: @number.phone_number,
-        sms_url: "https://corkyapp.herokuapp.com/api/posts",
-        sms_method: 'POST'
-      )
-      # incoming_number.update(sms_url: self.phone_url, sms_method: 'POST')
-      self.phone_number = incoming_number.phone_number
-    end
+    # Purchase the number
+    @number = @numbers[0]
+    incoming_number = @client.account.incoming_phone_numbers.create(
+      phone_number: @number.phone_number,
+      sms_url: "https://corkyapp.herokuapp.com/api/posts",
+      sms_method: 'POST'
+    )
+    # incoming_number.update(sms_url: self.phone_url, sms_method: 'POST')
+    self.phone_number = incoming_number.phone_number
   end
 
 end
