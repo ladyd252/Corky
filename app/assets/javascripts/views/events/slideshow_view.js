@@ -19,12 +19,11 @@ Corky.Views.SlideshowView = Backbone.View.extend({
         return channel.name === that.channelName
       })[0];
     }
-    this.currentImage = -1;
     channel.bind('fetchPosts',
       function(post_data) {
         var post = new Corky.Models.Post(post_data);
         that.collection.add(post)
-        that.currentImage = that.collection.indexOf(post);
+        that.counter = that.collection.indexOf(post);
       }
     );
     this.posts = this.model.posts().models;
@@ -33,10 +32,6 @@ Corky.Views.SlideshowView = Backbone.View.extend({
   startSlideshow: function(){
     if(this.collection.length>0){
       this.$(".img-slideshow").fadeOut("slow", function(){
-        if(this.currentImage > -1){
-          this.counter = this.currentImage;
-          this.currentImage = -1;
-        }
         var currentPost = this.collection.models[this.counter];
         var postTemp = this.templateSlideshow({post: currentPost, event: this.model});
         if (this.counter === 0) {
