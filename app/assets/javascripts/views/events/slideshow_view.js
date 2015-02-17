@@ -31,8 +31,8 @@ Corky.Views.SlideshowView = Backbone.View.extend({
   startSlideshow: function(){
     if(this.collection.length>0){
       if (this.counter > this.collection.length-1) {
-          this.counter = 0;
-        }
+        this.counter = 0;
+      }
       this.$(".img-slideshow").fadeOut("slow", function(){
         var currentPost = this.collection.models[this.counter];
         var postTemp = this.templateSlideshow({post: currentPost, event: this.model});
@@ -48,6 +48,9 @@ Corky.Views.SlideshowView = Backbone.View.extend({
      }
      this.intervalId = setInterval(function(){
       if(this.collection.length>0){
+        if (this.counter > this.collection.length-1) {
+          this.counter = 0;
+        }
         this.$(".img-slideshow").fadeOut("slow", function(){
           var currentPost = this.collection.models[this.counter];
           var postTemp = this.templateSlideshow({post: currentPost, event: this.model});
