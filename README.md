@@ -10,7 +10,7 @@ Corky is written in:
 * Ruby on Rails
 * Javascript (Backbone.js)
 
-And Uses:
+APIs used:
 * Pusher
 * Twilio
 * Filepicker
