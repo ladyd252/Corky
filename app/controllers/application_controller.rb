@@ -8,6 +8,9 @@ class ApplicationController < ActionController::Base
   def log_in!(user)
     user.reset_session_token!
     session[:token] = user.session_token
+    if user.email == "guest@guest.com"
+      user.set_up_data
+    end
   end
 
   def log_out!

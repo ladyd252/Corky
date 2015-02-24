@@ -17,7 +17,7 @@
 class Post < ActiveRecord::Base
   validates :event_id, presence: true
 
-  belongs_to :event
+  belongs_to :event, dependent: :destroy
   has_one :user, through: :event, source: :user
 
   def picture_url_twilio=(twilio_url)
