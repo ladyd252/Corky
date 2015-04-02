@@ -3,7 +3,7 @@ namespace :clean_up do
   task delete_numbers: :environment do
     Event.all.each do |event|
       if !event.event_date || event.event_date < Date::today
-        if event.phone_number
+        if event.phone_number && event.phone_number != "+14157636902"
           account_sid = ENV["twilio_account_id"]
           auth_token = ENV["twilio_auth_token"]
           client = Twilio::REST::Client.new account_sid, auth_token
