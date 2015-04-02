@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
     self.events.each do |event|
       event.delete
     end
-    e1 = self.events.find_or_create_by(title: "Welcome to Corky", phone_number: "+14157636902", event_date: Date::today )
+    e1 = self.events.find_or_create_by(title: "Welcome to Corky", phone_number: "+14157693892", event_date: Date::today )
     e1.posts.find_or_create_by(body: "Welcome, guest!", picture_url: "https://s3-us-west-1.amazonaws.com/ladyd252/happy-kitten-kittens-5890512-1600-1200.jpg")
   end
 
